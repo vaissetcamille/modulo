@@ -1,0 +1,124 @@
+/***** MODULO PRESENTATION *****/
+
+/* .menu-wrapper */
+.menu-wrapper {
+	backdrop-filter: blur(55px);
+	-webkit-backdrop-filter: blur(55px);
+
+	.ed-logo {
+		max-height: 40px;
+		max-width: 40px;
+		margin-right: var(--secondary-space);
+
+		&.contrast { filter: brightness(0) invert(1); }
+	}
+
+	h3 {
+		margin-bottom: 0;
+
+		&.contrast { color: $color-user-1!important; }
+	}
+}
+
+/* labels */
+@mixin label {
+	width: fit-content!important;
+	font-size: clamp(0.85rem, 1.5vw, .95rem);
+	letter-spacing: 0rem;
+	padding: .2rem .75rem;
+	border-radius: 5px;
+	border: 3px solid;
+	font-family: 'Source Code Pro','Fira Code', monospace;
+}
+
+@mixin label-base-css {
+  background: rgba($color-default,0.1);
+  color: $color-default;
+  border-color: transparent;
+  text-transform: lowercase;
+  font-weight: 600;
+}
+
+@mixin label-custom-css {
+	background: $color-primary!important;
+	color: $color-user-1!important;
+	text-transform: lowercase;
+	border-color: $color-primary;
+}
+
+@mixin label-js {
+	background: rgba($color-primary,0.2);
+	color: $color-primary!important;
+	text-transform: uppercase;
+	border-color: $color-primary;
+	font-weight: 600;
+}
+
+@mixin label-preset-css {
+	background: $color-secondary!important;
+	color: $color-user-1!important;
+	text-transform: lowercase;
+	border-color: $color-secondary;
+}
+
+@mixin label-mixin {
+	background: lighten($color-user-2,4%)!important;
+	color: $color-secondary!important;
+	text-transform: lowercase;
+	border-color: $color-secondary!important;
+	font-weight: 600;
+}
+
+.label-container {
+	margin-bottom: var(--primary-space);
+	&:not(:first-of-type) {
+	    margin-top: calc(0rem - var(--primary-space));
+	}
+
+	> .inner { justify-content: center; }
+
+	.ed-headline {
+		max-width: fit-content;
+		margin: var(--inter-space);
+		h1, h2, h3, h4, h5, h6 {
+		    margin-bottom: 0;
+		}
+
+		h2,
+		h4,
+		h5,
+		{
+			cursor: pointer;
+			transition: $transition;
+		}
+		h1 {
+		    @include label;
+		    @include label-base-css;
+		}
+		h2 {
+		    @include label;
+			@include label-custom-css;
+		}
+
+		h3 {
+			@include label;
+			@include label-custom-css;
+			opacity: .6;
+		}
+
+		h4 {
+			@include label;
+			@include label-js;
+		}
+
+		h5 {
+			@include label;
+			@include label-preset-css;
+		}
+
+		h6 {
+			@include label;
+			@include label-mixin;
+		}
+	}
+}
