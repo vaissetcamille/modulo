@@ -1,6 +1,6 @@
 /***** MODULO PRESET SCSS *****/
 .ed-element.preset-columns-two-v2-default {
-	@include columns-two-v2($margin: (2rem, null, null));
+	@include columns-two-v2;
 }
 .ed-element.preset-text-v2-default {
 	@include text-v2(
@@ -313,9 +313,6 @@
 		$box-3-width: (50%, null, 100%)
 	);
 }
-.ed-element.preset-columns-two-v2-default {
-	@include columns-two-v2;
-}
 .ed-element.preset-icon-accordion-v4-default {
 	@include icon-accordion-v4($content-background: transparent);
 }
@@ -541,3 +538,4 @@
 		$border-color-primary: $color-primary
 	);
 }
+
