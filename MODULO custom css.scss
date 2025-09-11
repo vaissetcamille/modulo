@@ -1553,6 +1553,7 @@
 	aspect-ratio: $main-ratio;
 	padding: var(--secondary-space)!important;
 	border-radius: $main-radius;
+	overflow: hidden!important;
 	height: 100%;
 	width: 100%;
 
@@ -3541,3 +3542,4 @@
 		.ed-icon svg path { filter: brightness(0) invert(1); }
 	}
 }
+
