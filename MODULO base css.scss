@@ -1,0 +1,323 @@
+/***** MODULO BASE SCSS *****/
+/*** VARIABLES ***/
+$main-ratio: 3/4; // vertical
+$secondary-ratio: 4/3; //horizontal
+$main-radius: 1rem;
+$secondary-radius: 3rem;
+$transition: .3s ease-in-out;
+
+$transition-slow: .6s ease-in-out;
+$transition-fast: .2s ease-in-out;
+
+$gradiant: linear-gradient(135deg, $color-primary, $color-secondary);
+$blury-gradiant:
+    radial-gradient(25% 35% at 30% 40%, $color-primary 0%, transparent 100%),
+    radial-gradient(30% 40% at 70% 60%, $color-secondary 0%, transparent 100%),
+    radial-gradient(20% 30% at 50% 80%, $color-primary 0%, transparent 100%),
+    linear-gradient(135deg, $color-primary, $color-secondary);
+
+:root {
+	--primary-space: 2rem;
+	--secondary-space: 1rem;
+	--inter-space: .5rem;
+}
+
+@media (max-width: 575px) {
+	:root {
+		--primary-space: 1.5rem;
+		--secondary-space: .75rem;
+		--inter-space: .25rem;
+	}
+}
+
+/*** TYPOGRAPHY ***/
+h1 {
+	font-size: clamp(2rem, 4vw, 4rem);
+	margin-bottom: 1rem;
+}
+
+h2 {
+	font-size: clamp(1.5rem, 3vw, 2.5rem);
+	margin-bottom: 1.5rem;
+}
+
+h3 {
+	font-size: clamp(.75rem, 2.5vw, .9rem);
+	margin-bottom: .5rem;
+}
+
+h4 {
+	font-size: clamp(1rem, 1.75vw, 1.25rem);
+	margin-bottom: .5rem;
+}
+
+h5 {
+	font-size: clamp(0.75rem, 1.5vw, 1rem);
+	margin-bottom: .5rem;
+}
+
+h6 {
+	font-size: clamp(0.75rem, 1vw, 0.85rem);
+	margin-bottom: .5rem;
+}
+
+.contrast {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p,
+	a:not(.ed-button a) { color: $color-user-1!important; }
+}
+
+.text-balance {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p { text-wrap: balance; }
+}
+
+@mixin tag {
+	width: fit-content!important;
+	font-size: clamp(0.75rem, 1.5vw, .9rem);
+	padding: .15rem 1.15rem;
+	background: $color-primary!important;
+	color: $color-user-1!important;
+	font-weight: 300;
+	border-radius: $main-radius;
+
+	a { color: $color-user-1!important; }
+}
+
+@mixin tag-contrast {
+	width: fit-content;
+	font-size: clamp(0.75rem, 1.5vw, .9rem);
+	padding: .15rem 1.15rem;
+	background: rgba($color-background,0.7)!important;
+	color: $color-default!important;
+	font-weight: 500;
+	border-radius: $main-radius;
+
+	a { color: $color-default!important; }
+}
+
+/*** GENERAL ***/
+.top-zero>.inner { padding-top: 0!important; }
+.bottom-zero>.inner { padding-bottom: 0!important; }
+.overlay { backdrop-filter: brightness(1); }
+.title-container { margin-bottom: var(--primary-space); }
+
+.image-container {
+	height: auto;
+	display: flex;
+	overflow: hidden;
+	border-radius: $main-radius;
+
+	img {
+		min-height: 100%;
+		min-width: 100%;
+		object-fit: cover;
+	}
+}
+
+.video-container {
+	height: auto;
+	display: flex;
+	overflow: hidden;
+	border-radius: $main-radius;
+
+	video {
+		min-height: 100%;
+		min-width: 100%;
+		object-fit: cover;
+	}
+}
+
+/* EFFECTS */
+/* .full */
+.full { min-height: 100vh!important; }
+
+/* .glass */
+@mixin glass {
+	backdrop-filter: blur(55px) brightness(1.5);
+	-webkit-backdrop-filter: blur(55px) brightness(1.5);
+	background-color: rgba($color-primary, 0.1); // 0.5 = 50% d’opacité
+}
+
+@mixin glass-shadow {
+	box-shadow: 0 12px 48px rgba(0, 0, 0, 0.06),
+		inset 0 4px 12px rgba(255, 255, 255, 0.08),
+		inset 0 -4px 12px rgba(255, 255, 255, 0.05),
+		inset 0 0 60px rgba(255, 255, 255, 0.15);
+}
+
+.glass {
+	@include glass;
+
+	.overlay {
+		opacity: 1;
+
+		@include glass;
+	}
+}
+
+/* .blury-bg */
+.blury-bg { background: $blury-gradiant; }
+
+/*** BUTTON ***/
+.ed-button {
+	.button {
+		margin: var(--inter-space);
+		width: fit-content;
+		border-radius: $main-radius;
+	}
+
+	&.align-left {
+		.button { margin-left: 0rem; }
+	}
+
+	&.align-right {
+		.button { margin-right: 0rem; }
+	}
+}
+
+/*** BASICS SECTIONS ***/
+/* .text-bloc */
+.text-bloc {
+
+}
+
+/* .two-col-text */
+.two-col-text {
+
+}
+
+/* .two-col-image */
+.two-col-image {
+	.image-container { aspect-ratio: $main-ratio; }
+}
+
+/* .two-col-full-image */
+.two-col-full-image {
+
+}
+
+/* .three-col-text */
+.three-col-text {
+
+}
+
+/* .three-col-images */
+.three-col-images {
+	.image-container { aspect-ratio: $main-ratio; }
+
+	@media (max-width: 975px) {
+		.unequal-columns-box {
+			&:not(:has(.image-container)) { flex-basis: calc(100% - 2rem)!important; }
+
+			&:has(.image-container) {
+				flex-basis: calc(50% - 2rem)!important;
+				order: 1;
+			}
+		}
+	}
+}
+
+/* .double-presentation */
+.double-presentation {
+    overflow: hidden;
+}
+
+/*** OTHERS ***/
+.mentions-legales {
+	@extend .blury-bg;
+	@extend .contrast;
+}
+
+.page-404 {
+	@extend .blury-bg;
+	@extend .contrast;
+	@extend .full;
+
+	position: relative;
+
+	h1 {
+		font-size: 20vw;
+		font-weight: 900;
+		z-index: 0;
+		opacity: .1;
+		line-height: 1;
+	}
+}
+
+/*** COOKIES ***/
+html {
+	body #tarteaucitronRoot.tarteaucitronSize-popup {
+		div#tarteaucitronAlertBig {
+			bottom: var(--inter-space);
+			left: var(--inter-space)!important;
+			max-width: fit-content!important;
+			display: flex!important;
+			justify-content: center;
+			align-items: center;
+			border-radius: $main-radius!important;
+			background-color: $color-user-4!important;
+			gap: var(--inter-space);
+			padding: var(--secondary-space);
+			flex-direction: row;
+			&:before {
+			    display: none;
+			}
+
+			span {
+				@extend p;
+
+				font-size: .8rem!important;
+				background: transparent!important;
+				color: $color-user-1!important;
+				margin: 0!important;
+				padding: 0 !important;
+				width: fit-content;
+
+				.tarteaucitronPartnersList { display: none; }
+			}
+
+			.tarteaucitronCTAButton {
+				font-size: .8rem!important;
+				width: fit-content;
+				margin: 0!important;
+				padding: var(--inter-space)!important;
+				border-radius: $main-radius;
+
+				&:hover { filter: brightness(1.15)!important; }
+			}
+
+			button.tarteaucitronAllow {
+				background-color: $button-background!important;
+				color: $button-color!important;
+			}
+
+			button.tarteaucitronDeny {
+				background-color: $secondary-button-background!important;
+				color: $secondary-button-color!important;
+			}
+
+			#tarteaucitronCloseAlert {
+				font-size: .8rem!important;
+				background-color: transparent!important;
+				color: $color-user-1!important;
+				opacity: .5!important;
+				margin: 0!important;
+				width: fit-content;
+			}
+		}
+		#tarteaucitronIcon {
+            display: none !important;
+        }
+	}
+}
