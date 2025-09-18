@@ -804,27 +804,6 @@
 .header-v6 {
 	position: relative;
 
-	> .inner {
-		position: unset;
-
-		.scroll-down {
-			z-index: 1;
-			position: absolute;
-			bottom: $spacer;
-			right: $spacer;
-
-			@media (max-width: 975px) {
-				bottom: 4rem;
-				right: 4rem;
-			}
-
-			@media (max-width: 975px) {
-				bottom: 3rem;
-				right: 3rem;
-			}
-		}
-	}
-
 	.image-container { height: 100%; }
 	.video-container { height: 100%; }
 	.slider-view {
@@ -3638,3 +3617,4 @@
 
 	}
 }
+
