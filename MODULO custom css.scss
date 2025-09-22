@@ -436,6 +436,32 @@
 	}
 }
 
+/* .scroll-text */
+.scroll-text {
+	overflow: hidden;
+	>.inner {
+	    padding-left: 0rem;
+	    padding-right: 0rem;
+	}
+
+	h2 {
+		margin-bottom: 0;
+		line-height: 1;
+	}
+
+	.scroll-container {
+		width: 200vw;
+		animation: scroll-left 20s linear infinite;
+	
+		.scroll-content { width: fit-content; }
+	}
+}
+
+@keyframes scroll-left {
+	from { transform: translateX(0%); }
+	to { transform: translateX(-50%); }
+}
+
 /* .spinning */
 .spinning {
 	.ed-icon {
@@ -3617,5 +3643,6 @@
 
 	}
 }
+
 
 
